@@ -1,0 +1,90 @@
+.navbar {
+    display: flex;
+    padding: 30px 60px;
+    background: var(--light-color-100, #FFF);
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 99vw;
+    box-sizing: border-box;
+    box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.24);
+}
+.nav_about{
+    margin-left: 70px;
+}
+.navbar>div {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: var(--text-color-100, #0B1B33);
+    font-family: Raleway;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 25.6px;
+}
+
+.signin {
+    display: flex;
+    height: 40px;
+    padding: 9px 18px;
+    border-radius: 4px;
+    background: var(--primary-color-100, #2557A7);
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    color: var(--light-color-100, #FFF);
+    font-family: Raleway;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    border: none;
+}
+
+.navbar select {
+    display: flex;
+    height: 40px;
+    padding: 9px 0px 9px 28px;
+    border-radius: 4px;
+    border: 1px solid var(--text-color-30, #B6BAC2);
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    width: 130px;
+}
+
+.flag {
+    position: relative;
+}
+
+.flag img {
+    position: absolute;
+    top: 10px;
+    left: 8px;
+}
+
+.job_nav_left a {
+    color: var(--Primary-Color-100, #2557A7);
+    font-family: Raleway;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.submit_job_btn {
+    color: var(--Primary-Color-100, #2557A7);
+    border-radius: 4px;
+    border: 1px solid var(--Primary-Color-100, #2557A7);
+    background-color: white;
+    font-family: Raleway;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}

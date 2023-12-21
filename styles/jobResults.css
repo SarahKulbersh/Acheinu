@@ -1,0 +1,108 @@
+.job_results {
+    padding: 200px 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 75px;
+}
+
+.job_results .searchbox {
+    width: 600px;
+}
+
+.job_results .letssupport {
+    color: var(--Text-Color-90, #243147);
+    font-family: Raleway;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.job_result_zone_est,
+.job_result_zone_ist {
+    color: var(--Text-Color-75, #485466);
+    font-family: Raleway;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 28.8px;
+    display: flex;
+    width: 350px;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 4px solid var(--Primary-Color-100, #2557A7);
+    cursor: pointer;
+}
+
+.job_result_zone {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.job_result_box {
+    display: flex;
+    gap: 20px;
+}
+
+.job_result_btn {
+    display: flex;
+    height: 56px;
+    padding: 15px 30px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    border-radius: 8px;
+    background: var(--Primary-Color-100, #2557A7);
+    color: var(--Light-Color-100, #FFF);
+    font-family: Raleway;
+    border: none;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.job_result_tags {
+    display: flex;
+    gap: 10px;
+}
+
+.job_result_tags div {
+    display: flex;
+    height: 32px;
+    padding: 9px 18px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    border-radius: 4px;
+    background: #FFF;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    color: #2557A7;
+    font-family: Raleway;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16.9px;
+    /* 84.5% */
+}
+
+.job_result_cnt {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 32px;
+    border-radius: 20px;
+    border: 1px solid var(--Text-Color-15, #DADDE0);
+    padding: 32px;
+    height: fit-content;
+}
+
+.job_results .recent_job_list {
+    display: flex;
+    flex-direction: column;
+}

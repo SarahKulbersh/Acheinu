@@ -1,0 +1,69 @@
+.job_form_back_btn {
+    display: flex;
+    height: 56px;
+    padding: 15px 16px;
+    align-items: center;
+    gap: 8px;
+    border-radius: 8px;
+    border: 1px solid var(--Primary-Color-100, #2557A7);
+    border: none;
+    width: fit-content;
+}
+
+.job_post_form{
+    width: 750px;
+}
+
+.job_apply_end_btns {
+    display: flex;
+    justify-content: space-between;
+}
+
+.job_apply_select {
+    height: 56px;
+    border-radius: 8px;
+    border: 1px solid var(--Text-Color-60, #6D7685);
+}
+
+.job_post_time_btn {
+    display: flex;
+    height: 56px;
+    padding: 15px 16px;
+    align-items: center;
+    gap: 8px;
+    border-radius: 56px;
+    border: 1px solid var(--Text-Color-60, #6D7685);
+    background: #FFF;
+}
+
+.job_active {
+    background: var(--Text-Color-60, #6D7685);
+    color: white;
+}
+
+.job_apply_type_btns {
+    display: flex;
+    gap: 12px;
+}
+
+.job_date_from_to {
+    display: flex;
+    align-items: center;
+}
+
+.job_form_filter {
+    display: flex;
+    gap: 21px;
+}
+
+.job_filter_select {
+    display: flex;
+    height: 56px;
+    padding: 15px 16px;
+    align-items: center;
+    gap: 8px;
+    align-self: stretch;
+    border-radius: 8px;
+    border: 1px solid var(--Text-Color-60, #6D7685);
+    width: fit-content;
+}

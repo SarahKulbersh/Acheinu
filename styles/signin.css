@@ -1,0 +1,108 @@
+.job_portal_signin {
+    padding: 150px;
+    width: 70vw;
+    margin: auto;
+}
+
+.signin_box {
+    display: flex;
+    padding: 32px;
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+    border-radius: 20px;
+    justify-content: center;
+    background: var(--Light-Color-100, #FFF);
+    box-shadow: 0 4px 20px 0 rgba(199, 215, 214, 0.44);
+}
+
+.employee_radiio {
+    display: flex;
+    height: 56px;
+    padding: 15px 16px;
+    align-items: center;
+    gap: 8px;
+}
+
+.signin_box h2 {
+    margin: 0;
+}
+
+.employee_radiio label {
+    color: var(--Text-Color-60, #6D7685);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.signin_method {
+    display: flex;
+    justify-content: center;
+}
+
+.signin_box_head{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.sinin_form_field{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.forgot_password{
+    color: var(--Text-Color-60, #6D7685);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 25px;
+    text-align: end;
+    width: 100%;
+    text-decoration: none;
+}
+
+.signin_box .signin{
+    width: 100%;
+    cursor: pointer;
+}
+
+.signin_desc{
+    color: var(--Text-Color-75, #485466);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 25px;
+}
+
+.signin_icons{
+    display: flex;
+    margin: auto;
+    gap: 20px;
+}
+
+.signin_icons img{
+    display: flex;
+    padding: 13px 26px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    border-radius: 12px;
+    border: 1px solid var(--Text-Color-15, #DADDE0);
+    background: var(--Light-Color-100, #FFF);
+}
+
+.singup_link{
+    margin: auto;
+    text-decoration: none;
+}
+
+.signup .job_apply_field{
+    width: 100%;
+}

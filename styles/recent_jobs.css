@@ -1,0 +1,186 @@
+.recent_jobs {
+    display: flex;
+    padding: 75px 100px;
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+}
+
+.recent_job_list{
+    display: grid;
+    grid-template-columns: repeat(2,auto);
+    gap: 32px;
+}
+
+.recent_jobs_heading {
+    color: #2557A7;
+    font-family: Raleway;
+    font-size: 34px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin: 0;
+}
+
+.recent_job_card {
+    display: flex;
+    width: 562px;
+    padding: 20px;
+    border-radius: 20px;
+    border: 1px solid var(--text-color-15, #DADDE0);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.recent_job_box_1 {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.recent_job_box_1 h3 {
+    width: 451px;
+    height: 38px;
+    color: var(--text-color-100, #0B1B33);
+    font-family: Raleway;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 38px;
+    margin: 0;
+}
+
+.recent_job_menu {
+    display: flex;
+    width: 56px;
+    height: 56px;
+    overflow: hidden;
+    padding: 12px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    background: #F3F7F7;
+    justify-content: center;
+    align-items: center;
+}
+
+.recent_job_menu_icon {
+    cursor: pointer;
+}
+
+.recent_job_company h4 {
+    color: var(--text-color-90, #243147);
+    font-family: Raleway;
+    font-size: 19px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 22px;
+    margin: 0;
+}
+
+.recent_job_company h6 {
+    color: var(--text-color-90, #243147);
+    font-family: Raleway;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 22.4px;
+    margin: 0;
+}
+
+.recent_job_box_2{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    align-self: stretch;
+}
+
+.recent_job_box_btn_1{
+    display: flex;
+    height: 32px;
+    padding: 9px 18px;
+    border-radius: 4px;
+    background: #ECECEC;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    box-sizing: border-box;
+    color: var(--text-color-75, #485466);
+    font-family: Raleway;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 22px;
+    cursor: pointer;
+}
+
+.recent_job_desc{
+    line-height: 22px;
+    align-self: stretch;
+    color: var(--text-color-60, #6D7685);
+    font-family: Raleway;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+}
+
+.recent_job_apply{
+    display: flex;
+    height: 40px;
+    padding: 9px 18px;
+    border-radius: 4px;
+    background: var(--primary-color-100, #2557A7);
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    color: var(--light-color-100, #FFF);
+    font-family: Raleway;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    border: none;
+    box-sizing: border-box;
+    cursor: pointer;
+    margin-left: calc(100% - 75px);
+}
+
+.recent_jobs_learn_more{
+    display: flex;
+    height: 56px;
+    padding: 15px 30px;
+    border-radius: 8px;
+    border: 1px solid var(--primary-color-100, #2557A7);
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    background-color: white;
+    color: var(--primary-color-100, #2557A7);
+    font-family: Raleway;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 1200px) {
+    .recent_jobs{
+        padding: 75px 0;
+    }
+    .recent_job_card{
+        width: 450px;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .recent_job_list{
+        grid-template-columns: auto;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .recent_job_card{
+        width: 80vw;
+    }
+}
