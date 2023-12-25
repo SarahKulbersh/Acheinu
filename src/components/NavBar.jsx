@@ -41,9 +41,6 @@ export default function NavBar() {
                         <option>English</option>
                     </select>
                 </div> */}
-                <Link>
-                    Submit resume
-                </Link>
                 <Link to='/post'>
                     <button className='signin submit_job_btn'>Submit job</button>
                 </Link>

@@ -7,16 +7,13 @@ import AllRoutes from './allRoutes';
 function App() {
   const [job, setJob] = useState('');
   const [estPreview, setEstPreview] = useState(false);
-  const [jobToApplyId, setJobToApplyId] = useState('')
   const [userId, setUserId] = useState('')
 
   return <>
     <userIdContext.Provider value={{ userId: userId, setUserId: setUserId }}>
       <JobContext.Provider value={{ job: job, setJob: setJob }}>
         <EstPreviewContext.Provider value={{ estPreview: estPreview, setEstPreview: setEstPreview }}>
-          <idJobToApplyContext.Provider value={{ jobToApplyId: jobToApplyId, setJobToApplyId: setJobToApplyId }}>
             <AllRoutes/>
-          </idJobToApplyContext.Provider>
         </EstPreviewContext.Provider>
       </JobContext.Provider >
     </userIdContext.Provider>

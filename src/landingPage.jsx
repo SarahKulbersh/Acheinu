@@ -19,7 +19,7 @@ function LandingPage() {
       <NavBar />
       <div className='supportbox'>
         <div className='letssupport'>Let’s support each other.</div>
-        <div className='beaprt'>Be a part of the collaboration betweenAhcheinu Bnei Yisrael In Ertez Yisrael and the diaspora</div>
+        <div className='beaprt'>Be a part of the collaboration between <br/>Ahcheinu Bnei Yisrael In Ertez Yisrael and the diaspora</div>
         <SearchBox/>
       </div>
             <RecentlyPostedJobs />
@@ -34,7 +34,7 @@ function LandingPage() {
             </div>
             <div className='look_work_box_child'>
               <h2 className='look_work_desc'>Employer? How can we help with your hiring needs</h2>
-              <button className='look_work_btn'>View available oppurtunities</button>
+              <button className='look_work_btn' onClick={() => {navigate('/post')}}>View available oppurtunities</button>
             </div>
           </div>
       <Footer />

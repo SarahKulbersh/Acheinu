@@ -75,7 +75,7 @@ export function UpdatePostJobForm({job, jobId}) {
 
         const postingJobIdString = getCurrentDateTimeString() + '_' + userId;
 
-        const person = collection(database, "persons");
+        const person = collection(database, "person");
         const userRef = doc(person, userId);
         const subcollectionRef = collection(userRef, "postingJobs");
         const postRef = doc(subcollectionRef, jobId);

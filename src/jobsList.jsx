@@ -25,7 +25,6 @@ export default function JobsList() {
   }
   useEffect(() => {
     setEstPreview(false)
-    console.log(estPreview)
   }, [])
 
   useEffect(() => {

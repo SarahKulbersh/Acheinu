@@ -31,30 +31,7 @@ export const Applications = () => {
     const fetchJobs = async page => {
         return (initState.slice((page - 1) * jobsPerPage, page * jobsPerPage))
     }
-    // const fetchApplications = async () => {
-    //     const userId = sessionStorage.getItem("userId")
-    //     const postingJobsRef = collection(database, `persons/${userId}/postingJobs`);
-    //     const docsSnap = await getDocs(postingJobsRef);
 
-    //     const jobs = docsSnap.docs.map((doc) => ({
-    //         ...doc.data(),
-    //         id: doc.id,
-    //         appliedUsers: doc.data().identitiesUserApplyes?.map((userId) => {
-
-    //             const userRef = getDoc(database, `persons/${userId}`);
-    //             console.log(userRef)
-    //             // i want to get the persons name from persons ->firstname lastname fields
-    //             const docsSnap = getDoc(userRef);
-    //             const user = docsSnap.data();
-    //             const name = `${user.firstName} ${user.lastName}`
-    //             console.log(name)
-    //             // here i want to go through each document and if the field jobId matches id 
-
-
-            
-    //         })
-    //     })).filter((job) => job.isJobActive)
-    // }
 
     useEffect(() => {
         fetchJobs()

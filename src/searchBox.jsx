@@ -23,7 +23,7 @@ export function SearchBox() {
   return (
     <div className='searchbox'>
       <img src={searchIcon} />
-      <input placeholder='Search' value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}></input>
+      <input placeholder='Search for your next job' value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}></input>
       <button className='signin' onClick={handleSearch}>Search</button>
     </div>
 

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { nextIcon } from "../../assets";
-import { collection, getDocs, getDoc, updateDoc, doc } from "firebase/firestore";
+import { collection, getDocs, getDoc, updateDoc, doc, deleteDoc } from "firebase/firestore";
 import { database } from "../../firebaseConfig";
 import { UpdatePostJobForm } from "../../updatePostJobForm";
 import { backArrowIcon } from "../../assets"
@@ -27,15 +27,14 @@ export const Jobs = () => {
             setShowUpdateJob(true)
         } else if (selectedValue === "Delete") {
             handleDelete(jobId)
-            // Confirm deletion and delete the selected job
-        } 
+        }
 
     }
 
     const handleDelete = async (jobId) => {
         console.log("delete")
         const userId = sessionStorage.getItem("userId")
-        const postingJobsRef = collection(database, `persons/${userId}/postingJobs`);
+        const postingJobsRef = collection(database, `person/${userId}/postingJobs`);
         const jobDoc = await doc(postingJobsRef, jobId);
         try {
             await updateDoc(jobDoc, {
@@ -43,14 +42,46 @@ export const Jobs = () => {
             });
             console.log("update successful")
 
+            await deleteApplications(jobId)
+
         } catch (error) {
             console.error("Error updating field:", error);
         }
-
     }
+    function extractDateTime(str) {
+        const string = str + ''
+        const dateTime = string.split("_");
+        const timeAndDate = dateTime.slice(0, 6).join("_");
+        return timeAndDate;
+    }
+
+    const deleteApplications = async (jobId) => {
+        const postDate = extractDateTime(jobId)
+        const userId = sessionStorage.getItem("userId")
+        const arrayDocs = []
+
+
+        const querySnapshot = await getDocs(collection(database, "jobApplications"));
+        querySnapshot.forEach((doc) => {
+
+            if (doc.id.includes(`${userId}_#_${postDate}_#_`))
+            {
+                arrayDocs.push(doc.id)
+            }
+            console.log(doc.id, " => ", doc.data());
+        });
+        console.log(arrayDocs.length)
+
+        arrayDocs.map(docId => {
+            deleteDoc(doc(database, "jobApplications", docId));
+            return true;
+
+        })
+    }
+
     const fetchPostingJobs = async page => {
         const userId = sessionStorage.getItem("userId")
-        const postingJobsRef = collection(database, `persons/${userId}/postingJobs`);
+        const postingJobsRef = collection(database, `person/${userId}/postingJobs`);
         const docsSnap = await getDocs(postingJobsRef);
 
         const jobs = docsSnap.docs.map((doc) => ({
@@ -59,14 +90,14 @@ export const Jobs = () => {
         })).filter((job) => job.isJobActive)
         setJobLength(jobs.length)
         setJobs(jobs);
-        return (jobs.slice((page-1)*jobsPerPage,page*jobsPerPage))
+        return (jobs.slice((page - 1) * jobsPerPage, page * jobsPerPage))
     };
     useEffect(() => {
         setJobs(jobs.slice(0, 6))
     }, [])
 
     useEffect(() => {
-        fetchPostingJobs(page).then((r)=> {
+        fetchPostingJobs(page).then((r) => {
             setJobs(r)
         })
     }, [page]);
@@ -75,7 +106,7 @@ export const Jobs = () => {
         <>
             {showUpdateJob === true &&
                 <div className="fullscreen_white_div">
-                    <img onClick={() => { setShowUpdateJob(false) }} style={{marginLeft:'5%'}} src={backArrowIcon} alt="" />
+                    <img onClick={() => { setShowUpdateJob(false) }} style={{ marginLeft: '5%' }} src={backArrowIcon} alt="" />
                     <UpdatePostJobForm jobId={jobIdForUpdate} job={jobForUpdate} />
                 </div>
             }

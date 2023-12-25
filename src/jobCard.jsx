@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { JobContext, EstPreviewContext, idJobToApplyContext } from './Context';
+import { JobContext, EstPreviewContext } from './Context';
 import { useNavigate } from 'react-router-dom';
 import "./styles/recent_jobs.css";
 import { Timestamp } from 'firebase/firestore';
@@ -9,29 +9,15 @@ export default function JobCard({ postingJobsData }) {
   const navigate = useNavigate();
 
   const { estPreview, setEstPreview } = useContext(EstPreviewContext)
-  const { jobToApplyId, setJobToApplyId } = useContext(idJobToApplyContext)
   const userId = sessionStorage.getItem("userId") ?? null;
   const { job, setJob } = useContext(JobContext);
   const [hasData, setHasData] = useState(false);
 
   useEffect(() => {
     if (postingJobsData && postingJobsData.length > 0) {
-      setHasData(true);
+      setJob(postingJobsData[0]);
     }
   }, []);
-
-  useEffect(() => {
-    if (hasData && !job && postingJobsData) {
-      setJob(postingJobsData[0]);
-    }
-  }, [hasData, job, postingJobsData]);
-
-  useEffect(() => {
-
-    if (!job && postingJobsData) {
-      setJob(postingJobsData[0]);
-    }
-  }, [postingJobsData])
 
   const openJob = (job) => {
     setJob(job);
@@ -56,7 +42,7 @@ export default function JobCard({ postingJobsData }) {
     console.log("timeString", timeString)
     const timeStr = convertTo24HourFormat(timeString)
     console.log("timestr", timeStr)
-    const [hours, minutes] = timeString.split(":");
+    const [hours, minutes] = timeStr.split(":");
     const timeObj = new Date();
     timeObj.setHours(hours);
     timeObj.setMinutes("00");

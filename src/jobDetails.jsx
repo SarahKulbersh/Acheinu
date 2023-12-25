@@ -1,6 +1,6 @@
 import React from 'react'
 import { useContext, useEffect } from 'react'
-import { JobContext, idJobToApplyContext, EstPreviewContext } from './Context'
+import { JobContext, EstPreviewContext } from './Context'
 import { useNavigate } from 'react-router-dom';
 import "./styles/jobResults.css"
 import { applyIcon } from './assets'
@@ -11,28 +11,9 @@ export default function JobDetails() {
   const { job, setJob } = useContext(JobContext);
   const navigate = useNavigate();
   const userId = sessionStorage.getItem("userId") ?? null;
-  const { setJobToApplyId } = useContext(idJobToApplyContext)
 
-  // time comes from the database like this "20:00 PM" => "20:00"
-  function convertTo24HourFormat(timeString) {
-    const [time, modifier] = timeString.split(" ");
-    let [hours, minutes] = time.split(":");
-
-    if (hours === "12") {
-      hours = "00";
-    }
-
-    if (modifier === "PM") {
-      hours = parseInt(hours, 10) + 12;
-    }
-
-    return `${hours}:${minutes}`;
-  }
 // depending if the user is viewing the jobs in EST or IST
   function convertTime(timeString, isEST) {
-    console.log("timeString", timeString)
-    const timeStr = convertTo24HourFormat(timeString)
-    console.log("timestr", timeStr)
     const [hours, minutes] = timeString.split(":");
     const timeObj = new Date();
     timeObj.setHours(hours);
@@ -57,13 +38,14 @@ export default function JobDetails() {
   if (!job) {
     return null;
   }
-  function handleApply(jobId) {
-    setJobToApplyId(jobId);
+  function handleApply(jobId, jobTitle) {
+    sessionStorage.setItem("jobId", jobId)
+    console.log("jobId", sessionStorage.getItem("jobId"))
+    sessionStorage.setItem("jobTitle", jobTitle)
     console.log(jobId)
     console.log("userId", userId)
     if (sessionStorage.getItem("userId") === null) {
       navigate('/signin')
-
     }
     else {
       navigate('/apply')
@@ -75,8 +57,7 @@ export default function JobDetails() {
   return (
     <div className='job_result_cnt'>
     <h4>{job.jobTitle}</h4>
-    <button className='job_result_btn' onClick={() => handleApply(job.postingJobId)}>Apply <img src={applyIcon} alt=""/></button>
-    {/* <h5>Job type</h5> */}
+    <button className='job_result_btn' onClick={() => handleApply(job.postingJobId, job.jobTitle)}>Apply <img src={applyIcon} alt=""/></button>
     <div className='job_result_tags'>
       <div>Full Time</div>
       <div>{job.startedTimeFrom && job.endedTimeIn ? (
