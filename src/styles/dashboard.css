@@ -248,14 +248,20 @@
 }
 
 .message_left{
-    display: flex;
-    width: 450px;
+
+    gap: 32px;
+    align-self: stretch;
+    height: 80vh;
+}
+
+.message_left_box{
     padding: 20px;
+    border-radius: 12px;
+    display: flex;
     flex-direction: column;
     align-items: center;
     gap: 32px;
-    align-self: stretch;
-    border-radius: 12px;
+    width: 35vw;
     border: 1px solid var(--Text-Color-15, #DADDE0);
 }
 
@@ -264,20 +270,41 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 20px;
+    height: 70vh;
+    overflow-y: auto;
     align-self: stretch;
     width: 100%;
+}
+
+.messages_boxes::-webkit-scrollbar {
+    width: 8px;
+    height: 30px;
+}
+
+.messages_boxes::-webkit-scrollbar-thumb {
+    background-color: rgba(136, 136, 136, 0.69);
+    border-radius: 6px;
+}
+
+.messages_boxes::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+}
+
+.messages_boxes::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
 }
 
 .messages_box{
     display: flex;
     padding: 20px;
-    width: 100%;
+    width: 97%;
     gap: 15px;
     align-self: stretch;
     border-radius: 20px;
     border: 1px solid var(--Text-Color-15, #DADDE0);
     white-space: nowrap;
     flex-direction: column;
+    cursor: pointer;
 }
 
 .message_title{
@@ -319,12 +346,14 @@
 
 .message_right{
     display: flex;
+    height: fit-content;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 32px;
-    flex: 1 0 0;
     align-self: stretch;
+    width: 45vw;
+    padding: 20px;
 }
 
 .message_right h2{
@@ -332,6 +361,7 @@
     font-size: 32px;
     font-style: normal;
     font-weight: 600;
+    margin: 0;
     line-height: normal;
 }
 .message_right img{
@@ -344,17 +374,171 @@
     font-size: 18px;
     font-style: normal;
     font-weight: 500;
-    line-height: 28; /* 160% */
+    line-height: 28;
+    height: 15px;
 }
 
-.fullscreen_white_div {
-    padding: 50px;
-    position: fixed;
-    top: 0;
-    left: 0;
+.message_from{
+    overflow: hidden;
+    color: var(--Text-Color-100, #0B1B33);
+    text-overflow: ellipsis;
+    font-family: Raleway;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.message_date{
+    display: flex;
+    padding: 15px 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
     width: 100%;
-    height: 100%;
-    background-color: white;
-    z-index: 9999; /* Ensure the div appears on top of other elements */
-    overflow: auto;
-  }
+    border-radius: 4px;
+    background: #F3F2F1;
+    color: var(--Text-Color-60, #6D7685);
+    font-family: Raleway;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 25px; /* 160% */
+}
+
+.message_day{
+    color: var(--Text-Color-60, #6D7685);
+    font-family: Raleway;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 25px;
+    width: 100%;
+    text-align: center;
+}
+
+.message_name{
+    color: var(--Text-Color-100, #0B1B33);
+    font-family: Raleway;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.message_box_reply{
+    display: flex;
+    padding-top: 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+    align-self: stretch;
+    border-top: 1px solid var(--Text-Color-15, #DADDE0);
+}
+
+.message_box_reply_input,.message_box_reply_input:focus{
+    border: none;
+    outline: none;
+    height: 40px;
+    width: 100%;
+    margin: 0;
+}
+
+.message_right .message_box_reply_img{
+    width: 20px;
+    cursor: pointer;
+}
+
+.message_box_send{
+    display: flex;
+    height: 40px;
+    padding: 9px 18px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    border-radius: 4px;
+    background: #0a53be;
+    border: none;
+    cursor: pointer;
+    color: white;
+}
+
+.message_box_send:disabled{
+    background: var(--Primary-Color-45, #9DB3D7);
+}
+
+.message_box_reply>div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+    height: 40px;
+}
+
+.application_action{
+    display: flex;
+    gap: 10px;
+}
+
+.application_action img{
+    width: 20px;
+    cursor: pointer;
+}
+
+.my_resume{
+    display: flex;
+    width: 80vw;
+    padding: 60px 32px;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    border-radius: 20px;
+    background: var(--Light-Color-100, #FFF);
+}
+
+.my_resume_box{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.resume_prof_details{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.resume_prof_edit_head{
+    display: flex;
+    justify-content: space-between;
+}
+
+.my_resume_edit_imgs{
+    display: flex;
+    gap: 20px;
+}
+
+.my_resume_edit_imgs img{
+    cursor: pointer;
+}
+
+.my_resume_name{
+    color: var(--Text-Color-100, #0B1B33);
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 38px;
+}
+
+.resume_desc_details{
+    color: var(--Text-Color-60, #6D7685);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 25px; /* 160% */
+}
+
+.job_apply_form_body_edit{
+    width: 60%;
+}
