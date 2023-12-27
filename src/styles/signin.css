@@ -106,3 +106,17 @@
 .signup .job_apply_field{
     width: 100%;
 }
+
+@media screen and (max-width: 768px) {
+    .job_apply_field,.job_form_field,.job_form_input{
+        width: 100%;
+    }
+
+    .signin_box{
+        width: 80vw;
+    }
+
+    .job_portal_signin{
+        padding: 150px 0;
+    }
+}

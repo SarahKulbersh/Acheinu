@@ -139,7 +139,7 @@ export function PostJobForm() {
     return (
         <>
             <NavBar />
-            <Container className='job_apply_form'>
+            <Container className='job_apply_form'  style={{paddingTop:"100px"}}>
                 {cardNumber === 1 &&
                     <Card>
                         <Card.Body className='job_apply_form_body'>

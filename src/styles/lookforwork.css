@@ -57,3 +57,37 @@
     line-height: normal;
     cursor: pointer;
 }
+
+.look_work {
+    display: flex;
+    padding: 75px 100px;
+    font-weight: 600;
+    line-height: normal;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .look_work {
+        padding: 50px 20px;
+        gap: 50px;
+    }
+
+    .look_work_box {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .look_work_desc {
+        font-size: 40px;
+    }
+
+    .look_work_icon {
+        width: 100%;
+        height: auto;
+    }
+
+    .look_work_btn {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+}

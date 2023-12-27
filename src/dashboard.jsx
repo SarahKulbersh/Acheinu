@@ -25,8 +25,7 @@ export default function Dashboard() {
                  const userId = sessionStorage.getItem("userId")
                  const personDocRef = doc(database, 'person', userId);
                  const docsSnap = await getDoc(personDocRef);
-                 const userData = docsSnap._document.data.value.mapValue.fields;
-                 setEmploye(userData.employe.booleanValue)
+                 setEmploye(!docsSnap?.data().isAdmin)
             } catch (error) {
                 console.log(error)
             }
@@ -44,7 +43,7 @@ export default function Dashboard() {
                     case "jobs":
                         return isEmploye?<MyResume/>:<Jobs/>
                     case "applications":
-                        return isEmploye?<Application/>:<Applications/>
+                        return isEmploye?<Applications/>:<Application/>
                     case "inbox":
                         return isEmploye?<Inbox/>:<Inbox/>
                     default:

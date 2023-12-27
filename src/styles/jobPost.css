@@ -1,3 +1,4 @@
+/* Default styles for larger screens */
 .job_form_back_btn {
     display: flex;
     height: 56px;
@@ -10,7 +11,7 @@
     width: fit-content;
 }
 
-.job_post_form{
+.job_post_form {
     width: 750px;
 }
 
@@ -66,4 +67,48 @@
     border-radius: 8px;
     border: 1px solid var(--Text-Color-60, #6D7685);
     width: fit-content;
+}
+
+
+@media only screen and (max-width: 768px) {
+    .job_form_back_btn {
+        padding: 10px;
+        gap: 5px;
+    }
+
+    .job_post_form {
+        width: 100%;
+    }
+
+    .job_apply_end_btns {
+        flex-direction: column;
+    }
+
+    .job_apply_select,
+    .job_post_time_btn,
+    .job_filter_select {
+        width: 100%;
+    }
+
+    .job_apply_select,
+    .job_post_time_btn,
+    .job_filter_select {
+        padding: 10px;
+        gap: 5px;
+    }
+
+    .job_active {
+        border-radius: 8px;
+    }
+
+    .job_apply_type_btns {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .job_date_from_to,
+    .job_form_filter {
+        flex-direction: column;
+        gap: 10px;
+    }
 }

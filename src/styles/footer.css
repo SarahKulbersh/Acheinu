@@ -1,3 +1,4 @@
+/* Default styles for larger screens */
 .footer {
     position: relative;
     padding: 75px 60px 34px 60px;
@@ -6,7 +7,7 @@
 
 .footer_links {
     display: grid;
-    grid-template-columns: repeat(3,auto);
+    grid-template-columns: repeat(3, auto);
     row-gap: 20px;
     width: 69%;
 }
@@ -43,12 +44,12 @@
     margin-top: 60px;
 }
 
-.footer_link_icons{
+.footer_link_icons {
     display: flex;
     gap: 20px;
 }
 
-.footer_media_icon{
+.footer_media_icon {
     display: flex;
     width: 48px;
     height: 64px;
@@ -61,4 +62,29 @@
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+    .footer {
+        padding: 50px 20px 20px 20px;
+    }
+
+    .footer_links {
+        grid-template-columns: 1fr;
+    }
+
+    .footer_link {
+        width: 100%;
+    }
+
+    .footer_terms {
+        margin-top: 20px;
+    }
+
+    .footer_media_icon {
+        width: 40px;
+        height: 40px;
+        padding: 10px;
+    }
 }

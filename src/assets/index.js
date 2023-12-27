@@ -34,6 +34,8 @@ import editIcon from "./editIcon.svg";
 import delteRedIcon from "./redDelete.svg";
 import googleIcon from "./gooogle.svg";
 import faceBookIcon from "./facebookIcon.svg"
+import navIcon from "./navIcon.svg";
+import navClose from "./navClose.svg"
 export {
     backArrowIcon, uploadIcon, orLineIcon, crossIcon, dragIcon, addMore, deleteIcon, leftArrow, rightArrow, optionsIcon,
     workIcon,
@@ -61,5 +63,7 @@ export {
     editIcon,
     delteRedIcon,
     googleIcon,
-    faceBookIcon
+    faceBookIcon,
+    navIcon,
+    navClose
 }
