@@ -43,7 +43,7 @@ export default function Dashboard() {
                     case "jobs":
                         return isEmploye?<MyResume/>:<Jobs/>
                     case "applications":
-                        return isEmploye?<Applications/>:<Application/>
+                        return isEmploye?<Application/>:<Applications/>
                     case "inbox":
                         return isEmploye?<Inbox/>:<Inbox/>
                     default:

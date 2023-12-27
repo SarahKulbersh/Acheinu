@@ -18,8 +18,8 @@ const profileDetailsInit = {
     work: {
         jobTitle: "UI UX Designer",
         company: "Fiverr/Upwork ",
-        JobPeriodToYear: "",
         description: "",
+        JobPeriodToYear: "",
         JobPeriodToMonth:"",
         JobPeriodFromYear: "",
         JobPeriodFromMonth: ""

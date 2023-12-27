@@ -1,25 +1,26 @@
 import { useEffect, useState } from "react";
 import { nextIcon } from "../../assets";
-import { collection } from "firebase/firestore";
+import { collection, doc } from "firebase/firestore";
 import { database } from "../../firebaseConfig";
 import { getDocs, getDoc } from "firebase/firestore";
 
 const initState = [{
-    name: "Bookkeeper", createdAt: "July 23 2023", payable: "Accounts Payable"
+    firstName: "Bookkeeper", updatedAt: "July 23 2023", payable: "Accounts Payable"
 }, {
-    name: "Accounts Payable", createdAt: "July 23 2023", payable: "Accounts Payable"
+    firstName: "Accounts Payable", updatedAt: "July 23 2023", payable: "Accounts Payable"
 }, {
-    name: "Inventory Management", createdAt: "July 23 2023", payable: "Accounts Payable"
+    firstName: "Inventory Management", updatedAt: "July 23 2023", payable: "Accounts Payable"
 }, {
-    name: "Underwriter", createdAt: "July 23 2023", payable: "Accounts Payable"
+    firstName: "Underwriter", updatedAt: "July 23 2023", payable: "Accounts Payable"
 }, {
-    name: "Interior Designer", createdAt: "July 23 2023", payable: "Accounts Payable"
+    firstName: "Interior Designer", updatedAt: "July 23 2023", payable: "Accounts Payable"
 }, {
-    name: "CRM Manager", createdAt: "July 23 2023", payable: "Accounts Payable"
+    firstName: "CRM Manager", updatedAt: "July 23 2023", payable: "Accounts Payable"
 }
 ]
 
-for (let i = 0; i < 33; i++) initState.push(initState[Math.floor(Math.random() * 5)])
+
+let applicationsBackup = [];
 
 export const Applications = () => {
 
@@ -29,12 +30,29 @@ export const Applications = () => {
     const jobsPerPage = 6
 
     const fetchJobs = async page => {
-        return (initState.slice((page - 1) * jobsPerPage, page * jobsPerPage))
+
+        if(applicationsBackup.length) 
+            return applicationsBackup.slice((page - 1) * jobsPerPage, page * jobsPerPage);
+
+        const persons = collection(database, "persons");
+        const userId = "123@gmail.com";
+        // const userId = sessionStorage.getItem("userId");
+        const userRef = doc(persons, userId);
+        const subcollectionRef = collection(userRef, "applyJobs");
+        const applyJobs = await getDocs(subcollectionRef);
+        const applications = [];
+        applyJobs.forEach(doc=>{
+            const data = doc.data();
+            data.updatedAt = new Date((data.updatedAt?.seconds||1000)*1000).toDateString();
+            applications.push(data);
+        })
+        applicationsBackup = applications;
+        return applications.slice((page - 1) * jobsPerPage, page * jobsPerPage);
     }
 
 
     useEffect(() => {
-        fetchJobs()
+        fetchJobs(1)
         setJobs(initState.slice(0, 6))
     }, [])
 
@@ -52,11 +70,11 @@ export const Applications = () => {
                 <div className='job_table_th'>Applied Date</div>
                 <div className='job_table_th'>Actions</div>
             </div>
-            {jobs.map(({ createdAt = "", name = "", payable = "" }, i) => (<div key={i} className='job_table_tbody'>
-                <div className='job_table_td job_table_td_name app_table_td_name'>{name}
+            {jobs.map(({ updatedAt = "", firstName = "",lastName="", payable = "" }, i) => (<div key={i} className='job_table_tbody'>
+                <div className='job_table_td job_table_td_name app_table_td_name'>{firstName+" "+lastName}
                     <div>{payable}</div>
                 </div>
-                <div className='job_table_td'>{createdAt}</div>
+                <div className='job_table_td'>{updatedAt}</div>
                 <div className='job_table_td job_table_td_action'>
                     View application
                 </div>

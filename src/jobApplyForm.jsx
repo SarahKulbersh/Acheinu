@@ -506,6 +506,7 @@ export function JobApplyForm() {
                                 <button className='job_form_submit' onClick={(e) => handleContinueBtn(e)}>Continue</button>
 
                             </Form>
+                            
                         </Card.Body>
                     </Card>
                 }

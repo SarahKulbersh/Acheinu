@@ -101,22 +101,22 @@ export const JobApplyFormEdit = ({ page = 1, setPage, setProfileDetails, profile
                             <Form.Text>Do you want to Edit work history?</Form.Text>
                             <Form.Group>
                                 <Form.Label className='job_form_field'>Job title *</Form.Label>
-                                <Form.Control name="jobTitle" value={profileDetails.work.jobTitle} className='job_form_input' type='text' required onChange={(e) => handleChange(e.target)} />
+                                <Form.Control name="jobTitle" value={profileDetails.work?.jobTitle} className='job_form_input' type='text' required onChange={(e) => handleChange(e.target)} />
                             </Form.Group>
                             <Form.Group>
                                 <Form.Label className='job_form_field'>Company</Form.Label>
-                                <Form.Control name="company" value={profileDetails.work.company} className='job_form_input' type='text' required onChange={(e) => handleChange(e.target)} />
+                                <Form.Control name="company" value={profileDetails.work?.company} className='job_form_input' type='text' required onChange={(e) => handleChange(e.target)} />
                             </Form.Group>
                             <Form.Text className='job_form_field'>Time period</Form.Text>
                             <Form.Group className='job_edu_form_date'>
                                 <Form.Label>To</Form.Label>
                                 <div>
-                                    <Form.Select name="JobPeriodFromMonth" value={profileDetails.work.JobPeriodFromMonth} onChange={(e) => handleChange(e.target)}>
+                                    <Form.Select name="JobPeriodFromMonth" value={profileDetails.work?.JobPeriodFromMonth} onChange={(e) => handleChange(e.target)}>
                                         {months.map((e, i) => (
                                             <option value={e} key={i}>{e}</option>
                                         ))}
                                     </Form.Select>
-                                    <Form.Select name="JobPeriodFromYear" value={profileDetails.work.JobPeriodFromYear} onChange={(e) => handleChange(e.target)}>
+                                    <Form.Select name="JobPeriodFromYear" value={profileDetails.work?.JobPeriodFromYear} onChange={(e) => handleChange(e.target)}>
                                         {new Array(25).fill(1).map((e, i) => (
                                             <option value={2000 + i} key={i}>{2000 + i}</option>
                                         ))}
@@ -126,12 +126,12 @@ export const JobApplyFormEdit = ({ page = 1, setPage, setProfileDetails, profile
                             <Form.Group className='job_edu_form_date'>
                                 <Form.Label>To</Form.Label>
                                 <div>
-                                    <Form.Select name="JobPeriodToMonth" onChange={(e) => handleChange(e.target)} value={profileDetails.work.JobPeriodToMonth}>
+                                    <Form.Select name="JobPeriodToMonth" onChange={(e) => handleChange(e.target)} value={profileDetails.work?.JobPeriodToMonth}>
                                         {months.map((e, i) => (
                                             <option value={e} key={i}>{e}</option>
                                         ))}
                                     </Form.Select>
-                                    <Form.Select name="JobPeriodToYear" onChange={(e) => handleChange(e.target)} value={profileDetails.work.JobPeriodToYear}>
+                                    <Form.Select name="JobPeriodToYear" onChange={(e) => handleChange(e.target)} value={profileDetails.work?.JobPeriodToYear}>
                                         {new Array(25).fill(1).map((e, i) => (
                                             <option value={2000 + i} key={i}>{2000 + i}</option>
                                         ))}
@@ -142,15 +142,21 @@ export const JobApplyFormEdit = ({ page = 1, setPage, setProfileDetails, profile
                                 <Form.Label>Description</Form.Label>
                                 <Form.Text>Describe your position and any significant accomplishments</Form.Text>
                             </div>
-                            <textarea value={profileDetails.description}
+                            <textarea value={profileDetails.work?.description}
                                 id="exampleFormControlTextarea1"
                                 rows="5" name="description" onChange={(e) => handleChange(e.target)}
                             />
                             <div className='job_form_desc_btn_box'>
                                 <button className='job_form_submit' >Save Changes</button>
                                 <span>skip</span>
+                               
                             </div>
+                            <div className='job_form_add' onClick={() => { }}>
+                                    <img src={addMore} alt="" />
+                                    Add more
+                                </div>
                         </Form>
+
                     </Card.Body>
                 </Card>)}
 
@@ -163,7 +169,7 @@ export const JobApplyFormEdit = ({ page = 1, setPage, setProfileDetails, profile
                             </div>
                             <div>
                                 <Form.Label className='job_form_field'>Level of education *</Form.Label>
-                                <Form.Control className='job_form_input' type='text' required onChange={(e) => setEducationLevel(e.target.value)} />
+                                <Form.Control className='job_form_input' type='text' required nam onChange={(e) => setEducationLevel(e.target.value)} />
                             </div>
                             <div>
                                 <Form.Label className='job_form_field'>Field of study</Form.Label>

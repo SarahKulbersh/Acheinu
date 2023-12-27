@@ -4,9 +4,10 @@ import { collection, deleteDoc, doc, getDoc, getDocs, setDoc, updateDoc } from "
 import { database } from "../../firebaseConfig";
 
 
-const fetchJobApplicants = async (userId = "123@gmail.com",postingJobId) => {
+const fetchJobApplicants = async (userId = "123@gmail.com") => {
     try {
-        const personDocRef = doc(database, 'person', userId);
+        // const userId = sessionStorage.getItem("userId")
+        const personDocRef = doc(database, 'persons', userId);
         const docsSnap = await getDoc(personDocRef);
         return docsSnap.data();
     } catch (error) {
@@ -31,18 +32,17 @@ const fetchJobPosts = async () => {
             const data = doc.data();
             const { identitiesUserApplyes } = data;
             const applicants = [];
-            console.log(data)
             if (!!identitiesUserApplyes?.length) {
-                const fetchPromises = identitiesUserApplyes.map(async e => {
-                    let res = await fetchJobApplicants(e,data.postingJobId);
-                    console.log(res)
-                        // res.identitiesUserApplye = e;
-                    return res||{};
-                });
+                const fetchPromises = [];
+                for (let str of identitiesUserApplyes) {
+                    let res = await fetchJobApplicants(str);
+                    if(!res) continue;
+                    res.identitiesUserApplye = str;
+                    fetchPromises.push(res||{})
+                }
                 const results = await Promise.all(fetchPromises);
                 applicants.push(...results);
             }
-
             applicantsArray.push(...applicants);
         });
 
@@ -70,26 +70,20 @@ export const Application = () => {
 
         try {
             const persons = collection(database, "persons");
-            const userId = "123@gmail.com";
-            // const userId = sessionStorage.getItem("userId");
+            // const userId = "123@gmail.com";
+            const userId = sessionStorage.getItem("userId");
             const userRef = doc(persons, userId);
             const subcollectionRef = collection(userRef, "postingJobs");
             const postedJobs = await getDocs(subcollectionRef);
-            // console.log(postedJobs)
-            postedJobs.forEach(async doc=>{
-                console.log(doc.data())
+            postedJobs.forEach(async doc => {
                 const data = doc.data();
-                if(data.postingJobId==application.postingJobId){
-                    if(data?.identitiesUserApplyes?.length){
-                        let filtered = data.identitiesUserApplyes.filter(e=>e!=application.identitiesUserApplye)
+                    if (data?.identitiesUserApplyes?.length) {
+                        let filtered = data.identitiesUserApplyes.filter(e => e != application.identitiesUserApplye)
                         await updateDoc(doc.ref, { identitiesUserApplyes: filtered });
                     }
-                }
             })
-
-
-            setJobs(prev=>prev.filter((e,i)=>i!=index));
-            applications=applications.filter((e,i)=>i!=index);
+            setJobs(prev => prev.filter((e, i) => i != index));
+            applications = applications.filter((e, i) => i != index);
             console.log('Document deleted successfully.');
         } catch (error) {
             console.error('Error deleting document:', error);
@@ -100,7 +94,6 @@ export const Application = () => {
         if (!applications.length) {
             const result = await fetchJobPosts();
             const usedata = result.map((e, i) => {
-                console.log(e)
                 e.name = e.name || `test_name_${i}`;
                 e.payable = "Accounts Payable"
                 if (e.updatedAt) {
@@ -124,6 +117,7 @@ export const Application = () => {
     useEffect(() => {
         fetchJobs(page).then((r) => {
             setJobs(r)
+            setJobLength(r.length)
         })
     }, [page]);
 
@@ -135,8 +129,8 @@ export const Application = () => {
                 <div className='job_table_th'>Applied Date</div>
                 <div className='job_table_th'>Actions</div>
             </div>
-            {jobs.map(({ updatedAt = "", firstName = "", lastName="",payable = "" }, i) => (<div key={i} className='job_table_tbody'>
-                <div className='job_table_td job_table_td_name app_table_td_name'>{firstName+" "+lastName}
+            {jobs.map(({ updatedAt = "", firstName = "", lastName = "", payable = "" }, i) => (<div key={i} className='job_table_tbody'>
+                <div className='job_table_td job_table_td_name app_table_td_name'>{firstName + " " + lastName}
                     <div>{payable}</div>
                 </div>
                 <div className='job_table_td'>{updatedAt}</div>
